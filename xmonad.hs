@@ -8,11 +8,16 @@
 --
 
 import XMonad
-import Data.Monoid
+import Data.Monoid 
 import System.Exit
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 import XMonad.Hooks.ManageDocks
+
+-- From https://wiki.haskell.org/Xmonad/Config_archive/John_Goerzen%27s_Configuration#Customizing_xmonad
+import XMonad.Hooks.DynamicLog
+import XMonad.Util.EZConfig(additionalKeys)
+import System.IO
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -59,8 +64,8 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#dddddd"
-myFocusedBorderColor = "#ff0000"
+myNormalBorderColor  = "#cccccc"
+myFocusedBorderColor = "#cd8b00"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
