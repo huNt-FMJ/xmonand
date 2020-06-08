@@ -60,7 +60,7 @@ altLeftKey      = mod1Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
+myWorkspaces    = ["ws1","ws2","ws3","ws4","ws5","ws6","ws7","ws8","ws9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
