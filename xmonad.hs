@@ -234,6 +234,8 @@ myManageHook = composeAll
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore 
     , className =? "mpv"            --> doFloat
+    , className =? "vlc"            --> doFloat
+    , className =? "vlc"            --> doShift "ws1"
     , manageDocks
     ]
 
