@@ -8,19 +8,36 @@
 --
 
 import XMonad
+import XMonad.Config.Desktop
 import Data.Monoid 
 import System.Exit
+import System.IO
+
+-- util imports
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
-import XMonad.Hooks.ManageDocks
-
--- From https://wiki.haskell.org/Xmonad/Config_archive/John_Goerzen%27s_Configuration#Customizing_xmonad
-import XMonad.Hooks.DynamicLog
 import XMonad.Util.EZConfig(additionalKeys)
-import System.IO
+
+-- hook imports
+import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.DynamicLog  -- From https://wiki.haskell.org/Xmonad/Config_archive/John_Goerzen%27s_Configuration#Customizing_xmonad
+import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.ManageHelpers (isFullscreen, isDialog, doFullFloat, doCenterFloat, doRectFloat)
+import XMonad.Hooks.Place (placeHook, withGaps, smart)
+
+-- action
+import XMonad.Actions.CopyWindow
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
+
+-- Layout
+import XMonad.Layout.IndependentScreens  -- From https://www.youtube.com/watch?v=Ktn97lZyTJY 
+import XMonad.Layout.NoBorders           -- https://www.youtube.com/watch?v=oxLMBWTzxe4
+import XMonad.Layout.Spacing (spacing)   -- https://www.youtube.com/watch?v=oxLMBWTzxe4
+import XMonad.Layout.GridVariants (Grid(Grid)) -- https://www.youtube.com/watch?v=oxLMBWTzxe
+import XMonad.Layout.ResizableTile
+
 
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
