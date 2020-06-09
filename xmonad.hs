@@ -65,8 +65,8 @@ myBorderWidth   = 2
 -- mod3Mask = right alt
 -- mod4Mask = super key
 superKey        = mod4Mask
-myModMask       = mod1Mask 
 altLeftKey      = mod1Mask
+myModMask       = altLeftKey
 
 -- The default number of workspaces (virtual screens) and their names.
 -- By default we use numeric strings, but any string may be used as a
