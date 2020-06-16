@@ -165,7 +165,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     , ((superKey    .|. controlMask   , xK_q     ), spawn "xscreensaver-command -lock")
     , ((altLeftKey                    , xK_q     ), spawn "slack")
-    , ((altLeftKey                    , xK_f     ), spawn "xdg-open .")
+    , ((altLeftKey                    , xK_g     ), spawn "xdg-open .")
     , ((altLeftKey                    , xK_v     ), spawn "chromium")
     ]
     ++
