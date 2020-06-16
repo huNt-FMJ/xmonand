@@ -37,6 +37,7 @@ import XMonad.Layout.NoBorders           -- https://www.youtube.com/watch?v=oxLM
 import XMonad.Layout.Spacing (spacing)   -- https://www.youtube.com/watch?v=oxLMBWTzxe4
 import XMonad.Layout.GridVariants (Grid(Grid)) -- https://www.youtube.com/watch?v=oxLMBWTzxe
 import XMonad.Layout.ResizableTile
+import XMonad.Layout.Gaps --https://hackage.haskell.org/package/xmonad-contrib-0.13/docs/XMonad-Layout-Gaps.html
 
 
 -- The preferred terminal program, which is used in a binding below and by
@@ -77,7 +78,8 @@ myModMask       = altLeftKey
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = ["ws1","ws2","ws3","ws4","ws5","ws6","ws7","ws8","ws9"]
+myWorkspaces    :: [String]
+myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
