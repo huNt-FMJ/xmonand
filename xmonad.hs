@@ -29,6 +29,7 @@ import XMonad.Hooks.DynamicLog -- From https://www.youtube.com/watch?v=oxLMBWTzx
 
 -- action
 import XMonad.Actions.CopyWindow
+import XMonad.Actions.UpdatePointer --update mouse position (from https://github.com/NapoleonWils0n/ubuntu-dotfiles/blob/master/.config/xmonad/xmonad.hs#L41)
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -91,6 +92,8 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 --
 myNormalBorderColor  = "#cccccc"
 myFocusedBorderColor = "#cd8b00"
+
+myppCurrent = "#cb4b16"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -301,7 +304,12 @@ myEventHook = mempty
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
-myLogHook = return ()
+myLogHook = dynamicLogWithPP xmobarPP
+                { ppOutput = \x -> hPutStrLn xmproc x
+                --, ppCurrent = xmobarColor myppCurrent "" . wrap "[" "]" -- Current workspace in xmobar
+                } >> updatePointer (0.25, 0.25) (0.25, 0.25)
+
+
 
 ------------------------------------------------------------------------
 -- Startup hook
