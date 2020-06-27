@@ -24,6 +24,8 @@ import XMonad.Hooks.DynamicLog  -- From https://wiki.haskell.org/Xmonad/Config_a
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageHelpers (isFullscreen, isDialog, doFullFloat, doCenterFloat, doRectFloat)
 import XMonad.Hooks.Place (placeHook, withGaps, smart)
+import XMonad.Hooks.DynamicLog -- From https://www.youtube.com/watch?v=oxLMBWTzxe4
+
 
 -- action
 import XMonad.Actions.CopyWindow
