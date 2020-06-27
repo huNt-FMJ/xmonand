@@ -40,6 +40,10 @@ import XMonad.Layout.Spacing (spacing)   -- https://www.youtube.com/watch?v=oxLM
 import XMonad.Layout.GridVariants (Grid(Grid)) -- https://www.youtube.com/watch?v=oxLMBWTzxe
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.Gaps --https://hackage.haskell.org/package/xmonad-contrib-0.13/docs/XMonad-Layout-Gaps.html
+import XMonad.Actions.FloatKeys --https://stackoverflow.com/questions/9157349/xmonad-when-floating-a-window-move-or-resize-it#9157956
+import Data.Ratio ((%))         --https://stackoverflow.com/questions/9157349/xmonad-when-floating-a-window-move-or-resize-it#9157956
+
+
 
 
 -- The preferred terminal program, which is used in a binding below and by
@@ -176,18 +180,24 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-[1..9], Switch to workspace N
     -- mod-shift-[1..9], Move client to workspace N
     --
-    [((m .|. modm, k), windows $ f i)
+    [((m .|. modm, k), windows $ f i) -- this expression tells you what screen you are on
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
     ++
 
     --
-    -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
+    -- mod-{w,e,r}, Switch focus to physical/Xinerama screens 1, 2, or 3
     -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
     --
     [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
         | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+
+    -- ++
+
+    --[((m .|.modm, k), windows $ onCurrentScreen f i)
+        -- | (i, k) <- zip (XMonad.workspaces conf) [xK_1..xK_9]
+        -- , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
 
 ------------------------------------------------------------------------
@@ -263,6 +273,17 @@ myManageHook = composeAll
     , manageDocks
     ]
 
+-- Doesn't work for some reason: taken from https://stackoverflow.com/questions/9157349/xmonad-when-floating-a-window-move-or-resize-it#9157956
+--toggleFloat = withFocused (\windowId -> do
+--                              { floats <- gets (W.floating . windowset);
+--                                if windowId `M.member` floats
+--                                then withFocused $ windows . W.sink
+--                                else do
+--                                     keysMoveWindowTo (x, y) (gx1, gy1) windowId
+--                                     keysResizeWindow (dx, dy) (gx2, gy2) windowId
+--                              }
+--                          ) 
+--
 ------------------------------------------------------------------------
 -- Event handling
 
